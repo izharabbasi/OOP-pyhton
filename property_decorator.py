@@ -8,7 +8,14 @@ class Phone:
     @property
     def complete_specs(self):
         return f"{self.make} {self.model} and price is {self._price}"
-    
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, new_price):
+        self._price = max(new_price, 0)
 
     def calling(self, Phone_number):
         print(f"Calling {Phone_number}")
