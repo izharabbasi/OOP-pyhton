@@ -1,9 +1,14 @@
 class Phone:
-    def __init__(self, make, model, price):
+    def __init__(self, make, model, _price):
         self.make = make
         self.model = model
-        self.price = price
-        self.complete_specs = f"{self.make} {self.model} and price is {self.price}"
+        self._price = max(_price, 0)
+        # self.complete_specs = f"{self.make} {self.model} and price is {self._price}"
+
+    @property
+    def complete_specs(self):
+        return f"{self.make} {self.model} and price is {self._price}"
+    
 
     def calling(self, Phone_number):
         print(f"Calling {Phone_number}")
@@ -12,6 +17,8 @@ class Phone:
         return f"{self.make} and  {self.model}"
 
 
-phone1 = Phone("Iphone", "7Plus", 6500)
-
+phone1 = Phone("Iphone", "7Plus", -6500)
+phone1._price = -1000
 print(phone1.model)
+print(phone1._price)
+print(phone1.complete_specs)
